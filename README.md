@@ -1,2 +1,2 @@
-# Lab-1-JavaScript
+# JavaScript
 Vũ Văn An Lập trình JavaScript Lớp WD22201
