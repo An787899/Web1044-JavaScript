@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 3</title>
+</head>
+<body>
+    <h3>Lab 3</h3>
+    <script>
+      console.log("Bài 1: Kiểm tra chẵn");
+      function isEven(n) {
+        if (n % 2 === 0) {
+          console.log(`${n} là số chẵn`);
+        } else {
+          console.log(`${n} là số lẻ`);
+        }
+      }
+      isEven(4);
+      isEven(5);
+
+      console.log("Bài 2: Tính tiền điện");
+      function tinhTienDien(kwh) {
+        let tien = 0;
+        if (kwh <= 50) {
+          tien = kwh * 1800;
+        } else if (kwh <= 100) {
+          tien = 50 * 1800 + (kwh - 50) * 2300;
+        } else {
+          tien = 50 * 1800 + 50 * 2300 + (kwh - 100) * 3000;
+        }
+        return tien;
+      }
+
+      function timSoKWh(tongTien) {
+        let kwh = 0;
+        let bac1 = 50 * 1800;
+        let bac2 = 50 * 2300;
+        let gioiHan2Bac = bac1 + bac2;
+
+        if (tongTien <= bac1) {
+          kwh = tongTien / 1800;
+        } else if (tongTien <= gioiHan2Bac) {
+          kwh = 50 + (tongTien - bac1) / 2300;
+        } else {
+          kwh = 100 + (tongTien - gioiHan2Bac) / 3000;
+        }
+        return kwh;
+      }
+      console.log("Tiền điện cho 120 kWh:", tinhTienDien(120), "đ");
+      console.log("Số kWh tiêu thụ khi đóng 910.000đ:", timSoKWh(910000), "kWh");
+
+      console.log("Bài 3: Tính lương theo chức vụ và ngày công");
+      function tinhLuong(chucVu, ngayCong) {
+        const luongCoBan = 5000000;
+        const ngayCongQuyDinh = 24;
+        let heSo = 0;
+
+        switch (chucVu.toLowerCase()) {
+          case "intern":
+            heSo = 1.0;
+            break;
+          case "staff":
+            heSo = 1.5;
+            break;
+          case "senior":
+            heSo = 2.0;
+            break;
+          case "manager":
+            heSo = 3.0;
+            break;
+          default:
+            return "Chức vụ không hợp lệ!";
+        }
+
+        let luong = heSo * ngayCong * (luongCoBan / ngayCongQuyDinh);
+        return luong;
+      }
+      console.log("Lương thực nhận:", tinhLuong("intern", 24), "VNĐ");
+
+      console.log("Bài 4: Viết hàm chuẩn hoá câu");
+      function chuanHoaCau(str) {
+        let cleanStr = str.trim().replace(/\s+/g, " ");
+        let words = cleanStr.split(" ");
+        let resultWords = words.map((word) => {
+          return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+        });
+        return resultWords.join(" ");
+      }
+      let input = "   xin chao cac ban. hom nay troi dep qua   ";
+      console.log("Output:", chuanHoaCau(input));
+
+      console.log("Bài 5: Viết hàm calculator máy tính cầm tay");
+        function calculator(a, b, operator) {
+            switch (operator) {
+            case "+":
+                return a + b;
+            case "-":
+                return a - b;
+            case "*":
+                return a * b;
+            case "/":
+                if (b === 0) {
+                return "Không thể chia cho 0!";
+                }
+                return a / b;
+            default:
+                return "Phép toán không hợp lệ!";
+            }
+        }
+        console.log("Kết quả phép tính 10 + 5:", calculator(10, 5, "+"));
+        console.log("Kết quả phép tính 10 - 5:", calculator(10, 5, "-"));
+        console.log("Kết quả phép tính 10 * 5:", calculator(10, 5, "*"));
+        console.log("Kết quả phép tính 10 / 5:", calculator(10, 5, "/"));
+        console.log("Kết quả phép tính 10 / 0:", calculator(10, 0, "/"));
+        console.log("Kết quả phép tính 10 % 5:", calculator(10, 5, "%"));
+    </script>
+  </body>
+</html>
